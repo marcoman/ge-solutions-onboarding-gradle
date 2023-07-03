@@ -22,6 +22,9 @@ fun Project.configureMetalava() {
         project.tasks.named("check").configure {
             dependsOn(checkProvider)
         }
+        checkProvider.configure {
+            dependsOn(project.tasks.named("assemble"))
+        }
     }
 
     tasks.register("updateApi", JavaExec::class.java) {
@@ -45,7 +48,7 @@ private fun JavaExec.configureCommonMetalavaArgs(project: Project) {
         it.exclude("**/build/**")
         it.exclude("**/.*/**")
     }
-    inputs.files(apiFiles)
+    inputs.files(apiFiles.files)
     classpath = project.getMetalavaConfiguration()
     mainClass.set("com.android.tools.metalava.Driver")
     args = listOf(
