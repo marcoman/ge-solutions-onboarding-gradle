@@ -1,3 +1,5 @@
+import com.github.twitch4j.configureMetalava
+
 // In this section you declare the dependencies for your production and test code
 dependencies {
 	// Twitch4J Modules
@@ -33,3 +35,5 @@ publishing.publications.withType<MavenPublication> {
 		description.set("Core dependency")
 	}
 }
+
+configureMetalava()

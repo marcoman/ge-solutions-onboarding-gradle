@@ -36,6 +36,7 @@ public interface ITwitchClient extends AutoCloseable {
     TwitchHelix getHelix();
 
     /**
+     * @deprecated
      * Get Kraken
      *
      * @return TwitchKraken
