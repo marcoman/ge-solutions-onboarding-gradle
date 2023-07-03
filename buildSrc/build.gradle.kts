@@ -1,13 +1,13 @@
 plugins {
-	`kotlin-dsl`
+    `kotlin-dsl`
 }
 
 kotlin {
-	jvmToolchain {
-		languageVersion.set(JavaLanguageVersion.of(11))
-	}
+    jvmToolchain {
+        languageVersion.set(JavaLanguageVersion.of(11))
+    }
 }
 
 repositories {
-	mavenCentral()
+    mavenCentral()
 }

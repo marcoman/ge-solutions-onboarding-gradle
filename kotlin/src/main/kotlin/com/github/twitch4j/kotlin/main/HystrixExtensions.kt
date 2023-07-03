@@ -10,7 +10,7 @@ import kotlinx.coroutines.withContext
  * Also see [HystrixCommand#execute]
  *
  * @param dispatcher The dispatcher to run in
- * @return           The result of execute
+ * @return The result of execute
  */
 suspend fun <T> HystrixCommand<T>.get(
     dispatcher: CoroutineDispatcher = Dispatchers.IO

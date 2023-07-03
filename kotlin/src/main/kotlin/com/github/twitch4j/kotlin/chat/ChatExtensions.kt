@@ -29,7 +29,7 @@ import kotlinx.coroutines.launch
  * @param T                 The class of the events you want to receive
  * @param channel           The channel to retrieve events from
  * @param autoJoinAndLeave  Whether we automatically join and leave the channel or not
- * @return                  A flow object that encapsulates handling joining, listening to, and leaving a channel
+ * @return A flow object that encapsulates handling joining, listening to, and leaving a channel
  */
 inline fun <reified T : AbstractChannelEvent> ITwitchChat.channelEventsAsFlow(
     channel: String,
@@ -56,14 +56,13 @@ inline fun <reified T : AbstractChannelEvent> ITwitchChat.channelEventsAsFlow(
  *
  * @param channel           The channel to read chat messages from
  * @param autoJoinAndLeave  Whether we automatically join and leave the channel or not
- * @return                  A flow object that encapsulates joining, listening to messages, and leaving a channel
+ * @return A flow object that encapsulates joining, listening to messages, and leaving a channel
  */
 fun ITwitchChat.channelChatAsFlow(
     channel: String,
     autoJoinAndLeave: Boolean = true
 ): Flow<AbstractChannelMessageEvent> =
     channelEventsAsFlow(AbstractChannelMessageEvent::class.java, channel, autoJoinAndLeave)
-
 
 /**
  * Creates an events flow for the given channel.
@@ -87,7 +86,7 @@ fun ITwitchChat.channelChatAsFlow(
  * @param klass             The event class to receive
  * @param channel           The channel to retrieve events from
  * @param autoJoinAndLeave  Whether we automatically join and leave the channel or not
- * @return                  A flow object that encapsulates handling joining, listening to, and leaving a channel
+ * @return A flow object that encapsulates handling joining, listening to, and leaving a channel
  */
 fun <T : AbstractChannelEvent> ITwitchChat.channelEventsAsFlow(
     klass: Class<T>,
@@ -99,9 +98,7 @@ fun <T : AbstractChannelEvent> ITwitchChat.channelEventsAsFlow(
     }
 
     launch {
-        eventManager.flowOn(klass)
-            .filter { it.channel.name.equals(channel, true) }
-            .collect(::send)
+        eventManager.flowOn(klass).filter { it.channel.name.equals(channel, true) }.collect(::send)
     }
 
     awaitClose {

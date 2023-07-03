@@ -1,46 +1,46 @@
 // Plugins
 plugins {
-	id("com.apollographql.apollo") version "2.5.14"
+    id("com.apollographql.apollo") version "2.5.14"
 }
 
 // Dependencies
 dependencies {
-	// GraphQL
-	api(group = "com.apollographql.apollo", name = "apollo-runtime", version = "2.5.14")
-	api(group = "org.jetbrains", name = "annotations")
+    // GraphQL
+    api(group = "com.apollographql.apollo", name = "apollo-runtime", version = "2.5.14")
+    api(group = "org.jetbrains", name = "annotations")
 
-	// Hystrix
-	api(group = "com.netflix.hystrix", name = "hystrix-core")
+    // Hystrix
+    api(group = "com.netflix.hystrix", name = "hystrix-core")
 
-	// Caching
-	api(group = "io.github.xanthic.cache", name = "cache-provider-caffeine")
+    // Caching
+    api(group = "io.github.xanthic.cache", name = "cache-provider-caffeine")
 
-	// Twitch4J Modules
-	api(project(":twitch4j-common"))
-	api(project(":twitch4j-auth"))
+    // Twitch4J Modules
+    api(project(":twitch4j-common"))
+    api(project(":twitch4j-auth"))
 }
 
 tasks {
-	withType<io.freefair.gradle.plugins.lombok.tasks.Delombok> {
-		dependsOn("generateMainServiceApolloSources")
-	}
+    withType<io.freefair.gradle.plugins.lombok.tasks.Delombok> {
+        dependsOn("generateMainServiceApolloSources")
+    }
 
-	withType<Javadoc> {
-		// Ignore auto-generated files from apollo graphql
-		exclude("com/github/twitch4j/graphql/internal/**")
-	}
+    withType<Javadoc> {
+        // Ignore auto-generated files from apollo graphql
+        exclude("com/github/twitch4j/graphql/internal/**")
+    }
 
-	javadoc {
-		options {
-			title = "Twitch4J (v${version}) - GraphQL Module"
-			windowTitle = "Twitch4J (v${version}) - GraphQL Module"
-		}
-	}
+    javadoc {
+        options {
+            title = "Twitch4J (v$version) - GraphQL Module"
+            windowTitle = "Twitch4J (v$version) - GraphQL Module"
+        }
+    }
 }
 
 publishing.publications.withType<MavenPublication> {
-	pom {
-		name.set("Twitch4J GraphQL Module")
-		description.set("GraphQL dependency")
-	}
+    pom {
+        name.set("Twitch4J GraphQL Module")
+        description.set("GraphQL dependency")
+    }
 }

@@ -1,35 +1,35 @@
 // In this section you declare the dependencies for your production and test code
 dependencies {
-	// Rate Limiting
-	api(group = "com.bucket4j", name = "bucket4j_jdk8-core")
+    // Rate Limiting
+    api(group = "com.bucket4j", name = "bucket4j_jdk8-core")
 
-	// Cache
-	api(group = "io.github.xanthic.cache", name = "cache-provider-caffeine")
+    // Cache
+    api(group = "io.github.xanthic.cache", name = "cache-provider-caffeine")
 
-	// Named Capture Groups
-	api(group = "com.github.tony19", name = "named-regexp", version = "0.2.8")
+    // Named Capture Groups
+    api(group = "com.github.tony19", name = "named-regexp", version = "0.2.8")
 
-	// Twitch4J Modules
-	api(project(":twitch4j-common"))
-	api(project(":twitch4j-auth"))
-	api(project(":twitch4j-client-websocket"))
+    // Twitch4J Modules
+    api(project(":twitch4j-common"))
+    api(project(":twitch4j-auth"))
+    api(project(":twitch4j-client-websocket"))
 
-	// Testing
-	testImplementation(group = "org.mockito", name = "mockito-core")
-	testImplementation(group = "org.mockito", name = "mockito-junit-jupiter")
-	testImplementation(group = "org.awaitility", name = "awaitility")
+    // Testing
+    testImplementation(group = "org.mockito", name = "mockito-core")
+    testImplementation(group = "org.mockito", name = "mockito-junit-jupiter")
+    testImplementation(group = "org.awaitility", name = "awaitility")
 }
 
 tasks.javadoc {
-	options {
-		title = "Twitch4J (v${version}) - Chat Module"
-		windowTitle = "Twitch4J (v${version}) - Chat Module"
-	}
+    options {
+        title = "Twitch4J (v$version) - Chat Module"
+        windowTitle = "Twitch4J (v$version) - Chat Module"
+    }
 }
 
 publishing.publications.withType<MavenPublication> {
-	pom {
-		name.set("Twitch4J Chat Module")
-		description.set("Chat dependency")
-	}
+    pom {
+        name.set("Twitch4J Chat Module")
+        description.set("Chat dependency")
+    }
 }
