@@ -1,3 +1,4 @@
+import com.github.twitch4j.configureListDependencies
 import com.github.twitch4j.configureMetalava
 
 // In this section you declare the dependencies for your production and test code
@@ -37,3 +38,4 @@ publishing.publications.withType<MavenPublication> {
 }
 
 configureMetalava()
+configureListDependencies()
