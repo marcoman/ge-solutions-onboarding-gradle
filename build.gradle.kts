@@ -1,4 +1,5 @@
 import com.github.jengelman.gradle.plugins.shadow.tasks.ConfigureShadowRelocation
+import com.github.twitch4j.configureDependencyReport
 import com.github.twitch4j.configureKtlint
 import com.github.twitch4j.configureKtlintApplyToIdea
 
@@ -18,7 +19,7 @@ version = version
 project.configureKtlintApplyToIdea()
 // All-Projects
 allprojects {
-    this.configureKtlint()
+    configureKtlint()
     // Repositories
     repositories {
         mavenCentral()
@@ -228,6 +229,7 @@ subprojects {
             }
         }
     }
+    configureDependencyReport()
 }
 
 tasks.register<Javadoc>("aggregateJavadoc") {
