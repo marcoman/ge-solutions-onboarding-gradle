@@ -9,6 +9,9 @@ dependencies {
     // Named Capture Groups
     api(group = "com.github.tony19", name = "named-regexp", version = "0.2.8")
 
+    // Guava helper functions
+    implementation("com.google.guava:guava:25.1-jre")
+
     // Twitch4J Modules
     api(project(":twitch4j-common"))
     api(project(":twitch4j-auth"))
