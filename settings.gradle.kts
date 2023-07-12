@@ -1,5 +1,3 @@
-rootProject.name = "Twitch4J"
-
 include(
     ":common",
     ":auth",
