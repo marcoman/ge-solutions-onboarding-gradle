@@ -2,6 +2,7 @@ package com.github.twitch4j
 
 import org.gradle.api.Project
 import org.gradle.api.artifacts.ResolvedDependency
+import org.gradle.api.tasks.Copy
 import org.gradle.api.tasks.PathSensitivity
 
 fun Project.configureListDependencies() {
@@ -22,6 +23,7 @@ fun Project.configureListDependencies() {
 fun Project.configureDependencyReport() {
     val dependencyReport = task("dependencyReport") {
         group = "documentation"
+        description = "Creates a dependency report and saves it in projects build/reports/dependencies directory."
         val report = rootProject.layout.buildDirectory.file("reports/dependencies/dependencyReport.md")
         val buildGradleFiles = rootProject.fileTree(rootDir).also {
             it.include("**/*.gradle")
@@ -46,10 +48,23 @@ fun Project.configureDependencyReport() {
             report.get().asFile.writeText(dependenciesReport)
         }
     }
+
+    val dependencyReportRoot = tasks.register("dependencyReportRoot", Copy::class.java) {
+        group = "documentation"
+        description =
+            "Collects all the subprojects dependency reports in the root project build/reports/dependencies directory."
+        from(dependencyReport.outputs.files.asPath)
+        into(rootProject.layout.buildDirectory.dir("reports/dependencies"))
+        val proj = project.name.replace(":", "_").replace(" ", "-").replace("'", "")
+        rename("(.*).md", "$1_$proj.md")
+        mustRunAfter(dependencyReport)
+    }
+
     afterEvaluate {
         // check task is not available yet, which is why we use afterEvaluate
         project.tasks.named("check").configure {
             dependsOn(dependencyReport)
+            dependsOn(dependencyReportRoot)
         }
     }
 }
