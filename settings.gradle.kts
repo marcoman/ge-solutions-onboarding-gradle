@@ -14,8 +14,7 @@ include(
     ":graphql",
     ":util",
     ":twitch4j",
-    ":kotlin"
-	":auth",
+    ":kotlin",
 )
 
 project(":common").name = "twitch4j-common"
