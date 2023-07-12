@@ -1,37 +1,37 @@
 // In this section you declare the dependencies for your production and test code
 dependencies {
-	// HTTP Client
-	api(group = "io.github.openfeign", name = "feign-okhttp")
-	api(group = "io.github.openfeign", name = "feign-jackson")
-	api(group = "io.github.openfeign", name = "feign-slf4j")
-	api(group = "io.github.openfeign", name = "feign-hystrix")
-	api(group = "commons-configuration", name = "commons-configuration")
+    // HTTP Client
+    api(group = "io.github.openfeign", name = "feign-okhttp")
+    api(group = "io.github.openfeign", name = "feign-jackson")
+    api(group = "io.github.openfeign", name = "feign-slf4j")
+    api(group = "io.github.openfeign", name = "feign-hystrix")
+    api(group = "commons-configuration", name = "commons-configuration")
 
-	// Rate Limiting
-	api(group = "com.bucket4j", name = "bucket4j_jdk8-core")
+    // Rate Limiting
+    api(group = "com.bucket4j", name = "bucket4j_jdk8-core")
 
-	// Jackson (JSON)
-	api(group = "com.fasterxml.jackson.core", name = "jackson-databind")
+    // Jackson (JSON)
+    api(group = "com.fasterxml.jackson.core", name = "jackson-databind")
 
-	// Cache
-	api(group = "io.github.xanthic.cache", name = "cache-provider-caffeine")
+    // Cache
+    api(group = "io.github.xanthic.cache", name = "cache-provider-caffeine")
 
-	// Twitch4J Modules
-	api(project(":twitch4j-eventsub-common"))
-	api(project(":twitch4j-common"))
-	api(project(":twitch4j-auth"))
+    // Twitch4J Modules
+    api(project(":twitch4j-eventsub-common"))
+    api(project(":twitch4j-common"))
+    api(project(":twitch4j-auth"))
 }
 
 tasks.javadoc {
-	options {
-		title = "Twitch4J (v${version}) - Helix Module API"
-		windowTitle = "Twitch4J (v${version}) - Helix Module API"
-	}
+    options {
+        title = "Twitch4J (v$version) - Helix Module API"
+        windowTitle = "Twitch4J (v$version) - Helix Module API"
+    }
 }
 
 publishing.publications.withType<MavenPublication> {
-	pom {
-		name.set("Twitch4J API - Helix Module")
-		description.set("Helix API dependency")
-	}
+    pom {
+        name.set("Twitch4J API - Helix Module")
+        description.set("Helix API dependency")
+    }
 }

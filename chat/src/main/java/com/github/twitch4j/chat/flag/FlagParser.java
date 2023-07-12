@@ -1,6 +1,7 @@
 package com.github.twitch4j.chat.flag;
 
 import com.github.twitch4j.chat.events.channel.IRCMessageEvent;
+import com.google.common.base.CharMatcher;
 import lombok.NonNull;
 import lombok.experimental.UtilityClass;
 
@@ -25,6 +26,8 @@ public class FlagParser {
 
             String[] indices = parts[0].split("-");
             if (indices.length != 2)
+                continue;
+            if (!(CharMatcher.DIGIT.matchesAllOf(indices[0]) && CharMatcher.DIGIT.matchesAllOf(indices[1])))
                 continue;
             int start = Integer.parseInt(indices[0]);
             int end = Integer.parseInt(indices[1]);

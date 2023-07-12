@@ -1,20 +1,20 @@
 rootProject.name = "Twitch4J"
 
 include(
-	":common",
-	":auth",
-	":client-websocket",
-	":chat",
-	":eventsub-common",
-	":rest-extensions",
-	":rest-helix",
-	":rest-kraken",
-	":rest-tmi",
-	":pubsub",
-	":graphql",
-	":util",
-	":twitch4j",
-	":kotlin"
+    ":common",
+    ":auth",
+    ":client-websocket",
+    ":chat",
+    ":eventsub-common",
+    ":rest-extensions",
+    ":rest-helix",
+    ":rest-kraken",
+    ":rest-tmi",
+    ":pubsub",
+    ":graphql",
+    ":util",
+    ":twitch4j",
+    ":kotlin",
 )
 
 project(":common").name = "twitch4j-common"
