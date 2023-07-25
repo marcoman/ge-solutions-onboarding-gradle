@@ -26,6 +26,7 @@ Your starting point is the `master` branch. Good luck! :)
 * Volatile lines in `MANIFEST.MF` (timestamp, username, hostname, OS)
 * Overlapping outputs
 * Missing declared task dependencies
+* Volatile jvm arguments - absolute path
 * Build dependency resolution conflict (separate branch)
 * Runtime dependency resolution causing issues (separate branch)
 
@@ -47,6 +48,7 @@ Your starting point is the `master` branch. Good luck! :)
   * Volatile lines in MANIFEST.MF (timestamp, username, hostname, OS)
   * Overlapping outputs
   * Missing declared task dependencies
+  * Volatile jvm arguments - absolute path
 * [onboarding-broken-build](https://github.com/gradle/solutions-gradle-build-onboarding/tree/onboarding-broken-build) - ([changes](https://github.com/gradle/solutions-gradle-build-onboarding/compare/master...gradle:solutions-gradle-build-onboarding:onboarding-broken-build)), which breaks the build in two ways:
   * Dependency resolution conflict for build dependencies
   * Dependency resolution version upgrade resulting in a broken build
