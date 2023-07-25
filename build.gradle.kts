@@ -227,6 +227,7 @@ subprojects {
                 includeTags("unittest")
                 excludeTags("integration")
             }
+            jvmArgs("-XX:HeapDumpPath=${rootProject.buildDir}")
         }
     }
     configureDependencyReport()
