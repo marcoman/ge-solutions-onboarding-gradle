@@ -51,5 +51,14 @@ Your starting point is the `master` branch. Good luck! :)
   * Dependency resolution conflict for build dependencies
   * Dependency resolution version upgrade resulting in a broken build
 * [gk/onboarding-setup-fixes](https://github.com/gradle/solutions-gradle-build-onboarding/tree/gk/onboarding-setup-fixes) - ([changes](https://github.com/gradle/solutions-gradle-build-onboarding/compare/master...gradle:solutions-gradle-build-onboarding:gk/onboarding-setup-fixes)), which fixes all of the above problems.
-* [gk/onboarding-ge-solutions](https://github.com/gradle/solutions-gradle-build-onboarding/tree/gk/onboarding-ge-solutions) - ([changes](https://github.com/gradle/solutions-gradle-build-onboarding/compare/master...gradle:solutions-gradle-build-onboarding:gk/onboarding-ge-solutions)), which has a basic GE setup for the [Solutions GE instance](https://ge.solutions-team.gradle.com/scans)
+* [gk/onboarding-ge-solutions](https://github.com/gradle/solutions-gradle-build-onboarding/tree/gk/onboarding-ge-solutions) - ([changes](https://github.com/gradle/solutions-gradle-build-onboarding/compare/master...gradle:solutions-gradle-build-onboarding:gk/onboarding-ge-solutions)), follows the `master` branch but has a basic GE setup for the [Solutions GE instance](https://ge.solutions-team.gradle.com/scans)
  
+## Contributing
+
+When adding/modifying this project to include new problems, you should:
+
+- Update his readme by specifying what problem was added in the `List of issues`, as well as in the `Branches` part specifying
+on which branch it was added or if a new branch was added and what was done there.
+- After your changes are merged to `master`, you should merge `master` into [gk/onboarding-ge-solutions](https://github.com/gradle/solutions-gradle-build-onboarding/tree/gk/onboarding-ge-solutions) and
+  [gk/onboarding-setup-fixes](https://github.com/gradle/solutions-gradle-build-onboarding/tree/gk/onboarding-setup-fixes)
+- You should implement a fix of the new issue on the branch [gk/onboarding-setup-fixes](https://github.com/gradle/solutions-gradle-build-onboarding/tree/gk/onboarding-setup-fixes).
