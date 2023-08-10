@@ -35,6 +35,7 @@ fun Project.configureKtlint() {
         configureCommonKtlintParams(this@configureKtlint)
         description = "Check Kotlin code style."
         group = "Verification"
+        isIgnoreExitValue = true // Don't fail the build if ktlint finds problems - for faster onboarding
     }
 
     afterEvaluate {
