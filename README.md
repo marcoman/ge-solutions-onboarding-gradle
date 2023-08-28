@@ -10,7 +10,7 @@ separate branch.
 
 You will need to fork this repository if you want to tackle the CI part of experiments when onboarding.
 
-Your starting point is the `master` branch. Good luck! :)
+Your starting point is the `master` branch with the `build` task. The `build` task will run all the neccessary checks and tests, as well as assemble the code. Good luck! :)
 
 ## List of issues 
 
