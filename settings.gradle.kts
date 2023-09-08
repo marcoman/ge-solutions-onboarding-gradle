@@ -68,15 +68,20 @@ gradleEnterprise {
 
 buildCache {
     local {
-        isEnabled = true
+        isEnabled = false
     }
 
-    remote<HttpBuildCache> {
+    // Better to use gradleEnterprise.buildCache (see https://docs.gradle.com/enterprise/gradle-plugin/#using_the_gradle_enterprise_connector)
+    remote (gradleEnterprise.buildCache) {
         isEnabled = true
-        isPush = System.getenv("BUILD_URL") != null
-        isAllowUntrustedServer = true
-        isAllowInsecureProtocol = true
-        url = uri("http://ec2-44-203-143-70.compute-1.amazonaws.com/cache/exp4/")
+        // isPush = System.getenv("BUILD_URL") != null
+        isPush = true
+        // isAllowUntrustedServer = true
+        allowInsecureProtocol = true
+        // url = uri("http://ec2-44-203-143-70.compute-1.amazonaws.com/cache/exp4/")
+        // credentials {
+        //     username = ""
+        //     password = ""
     }
 }
 
