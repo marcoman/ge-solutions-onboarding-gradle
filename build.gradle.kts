@@ -17,6 +17,10 @@ group = group
 version = version
 
 project.configureKtlintApplyToIdea()
+
+// build.gradle.kts
+apply(from = "helper.gradle.kts")
+
 // All-Projects
 allprojects {
     configureKtlint()
