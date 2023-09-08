@@ -26,6 +26,19 @@ allprojects {
         google()
     }
 
+    normalization {
+    runtimeClasspath {
+        metaInf {
+            ignoreAttribute("SCM-Repository")
+            ignoreAttribute("SCM-Commit-Hash")
+            ignoreAttribute("SCM-Branch")
+            ignoreAttribute("SCM-Commit-Message")
+            ignoreAttribute("SCM-Commit-Author")
+            ignoreAttribute("SCM-Commit-Date")
+        }
+    }
+}
+
     tasks {
         withType<Javadoc> {
             options {
