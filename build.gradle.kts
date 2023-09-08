@@ -79,6 +79,9 @@ subprojects {
         withSourcesJar()
         withJavadocJar()
     }
+    manifest {
+        buildAttributes = false
+    }
 
     // Dependency Management for Subprojects
     dependencies {

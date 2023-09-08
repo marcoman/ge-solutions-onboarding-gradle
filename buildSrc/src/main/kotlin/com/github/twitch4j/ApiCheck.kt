@@ -3,18 +3,29 @@ package com.github.twitch4j
 import org.gradle.api.Project
 import org.gradle.api.artifacts.Configuration
 import org.gradle.api.tasks.JavaExec
+import org.gradle.api.tasks.PathSensitivity
 
-val API_BASE_FILE = "api.base"
+private const val API_BASE_FILE = "api.base"
 
 /**
  * Adapted from ktlint
  */
 fun Project.configureMetalava() {
     val checkProvider = tasks.register("checkApi", JavaExec::class.java) {
+
+        inputs.files(API_BASE_FILE).withPropertyName("apiCheckBaseFile").withPathSensitivity(PathSensitivity.RELATIVE)
+        val outFile = project.layout.buildDirectory.file("reports/checkApi/checkApiSuccess.txt")
+        outputs.files(outFile).withPropertyName("apiCheckSuccessFile")
+
         configureCommonMetalavaArgs(this@configureMetalava)
         description = "Check API compatibility."
         group = "Verification"
         args = listOf("--check-compatibility:api:released", API_BASE_FILE) + args
+        doLast {
+            executionResult.get().assertNormalExitValue()
+            outFile.get().asFile.writeText("SUCCESS")
+        }
+
     }
 
     afterEvaluate {
