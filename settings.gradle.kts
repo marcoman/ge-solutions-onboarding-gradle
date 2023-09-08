@@ -61,7 +61,23 @@ gradleEnterprise {
 
         // see https://docs.gradle.com/enterprise/gradle-plugin/#disabling_programmatically
         // Step 1 asks us to disable build scan background upload for all CI builds
-        isUploadInBackground = false
+        isUploadInBackground = true
 //        isUploadInBackground = System.genenv("CI") == null
+    }
+
+    buildCache {
+        local {enabled=false}
+        remote (HttpBuildCache) {
+            url = "http://ec2-44-203-143-70.compute-1.amazonaws.com/cache/exp4"
+            allowUntrustedServer = true
+
+            // If I'm right, I don't need these for experiment 4 since I'm running as me, and I already have a token
+            // credentials {
+            //     creds ->
+            //     creds.username = System.getenv("GRADLE_ENTERPRISE_CACHE_USERNAME")
+            //     creds.password = System.getenv("GRADLE_ENTERPRISE_CACHE_PASSWORD")
+            // }
+            enabled = truepush = System.genenv("BUILD_URL") != null
+        }
     }
 }
