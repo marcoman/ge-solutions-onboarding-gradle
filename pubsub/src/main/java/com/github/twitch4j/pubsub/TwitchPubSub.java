@@ -429,7 +429,7 @@ public class TwitchPubSub implements ITwitchPubSub {
                     eventManager.publish(new ChannelSubscribeEvent(TypeConvert.jsonToObject(rawMessage, SubscriptionData.class)));
                 } else if ("channel-commerce-events-v1".equals(topicName)) {
                     eventManager.publish(new ChannelCommerceEvent(TypeConvert.jsonToObject(rawMessage, CommerceData.class)));
-                } else if ("whispers".equals(topicName) && (type.equals("whisper_sent") || type.equals("whisper_received"))) {
+                } else if ("whispers".equals(topicName) && ("whisper_sent".equals(type) || "whisper_received".equals(type))) {
                     // Whisper data is escaped Json cast into a String
                     JsonNode msgDataParsed = TypeConvert.jsonToObject(msgData.asText(), JsonNode.class);
 

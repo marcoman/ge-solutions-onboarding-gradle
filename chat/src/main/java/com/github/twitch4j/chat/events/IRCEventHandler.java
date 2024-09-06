@@ -202,11 +202,11 @@ public class IRCEventHandler {
             EventChannel channel = event.getChannel();
 
             // Resub message for a multi-month gifted subscription
-            if (msgId.equalsIgnoreCase("resub") && "true".equalsIgnoreCase(event.getTags().get("msg-param-was-gifted"))) {
+            if ("resub".equalsIgnoreCase(msgId) && "true".equalsIgnoreCase(event.getTags().get("msg-param-was-gifted"))) {
                 eventManager.publish(new GiftedMultiMonthSubCourtesyEvent(event));
             }
             // Sub
-            else if (msgId.equalsIgnoreCase("sub") || msgId.equalsIgnoreCase("resub")) {
+            else if ("sub".equalsIgnoreCase(msgId) || "resub".equalsIgnoreCase(msgId)) {
                 // Load Info
                 EventUser user = event.getUser();
                 String subPlan = event.getTagValue("msg-param-sub-plan").get();
@@ -230,7 +230,7 @@ public class IRCEventHandler {
                 eventManager.publish(new SubscriptionEvent(event, channel, user, subPlan, event.getMessage(), cumulativeMonths, false, null, streak, null, multiMonthDuration, multiMonthTenure, event.getFlags()));
             }
             // Receive Gifted Sub
-            else if (msgId.equalsIgnoreCase("subgift") || msgId.equalsIgnoreCase("anonsubgift")) {
+            else if ("subgift".equalsIgnoreCase(msgId) || "anonsubgift".equalsIgnoreCase(msgId)) {
                 // Load Info
                 EventUser user = new EventUser(event.getTagValue("msg-param-recipient-id").get(), event.getTagValue("msg-param-recipient-user-name").get());
                 EventUser giftedBy = event.getUser();
@@ -253,7 +253,7 @@ public class IRCEventHandler {
                 eventManager.publish(new SubscriptionEvent(event, channel, user, subPlan, event.getMessage(), subStreak, true, giftedBy != null ? giftedBy : ANONYMOUS_GIFTER, 0, giftMonths, giftMonths, multiMonthTenure, event.getFlags()));
             }
             // Gift X Subs
-            else if (msgId.equalsIgnoreCase("submysterygift") || msgId.equalsIgnoreCase("anonsubmysterygift")) {
+            else if ("submysterygift".equalsIgnoreCase(msgId) || "anonsubmysterygift".equalsIgnoreCase(msgId)) {
                 // Load Info
                 EventUser user = event.getUser();
                 String subPlan = event.getTagValue("msg-param-sub-plan").get();
@@ -264,7 +264,7 @@ public class IRCEventHandler {
                 eventManager.publish(new GiftSubscriptionsEvent(channel, user != null ? user : ANONYMOUS_GIFTER, subPlan, subsGifted, subsGiftedTotal));
             }
             // Upgrading from a gifted sub
-            else if (msgId.equalsIgnoreCase("giftpaidupgrade") || msgId.equalsIgnoreCase("anongiftpaidupgrade")) {
+            else if ("giftpaidupgrade".equalsIgnoreCase(msgId) || "anongiftpaidupgrade".equalsIgnoreCase(msgId)) {
                 // Load Info
                 EventUser user = event.getUser();
                 String promoName = event.getTagValue("msg-param-promo-name").orElse(null);
@@ -277,7 +277,7 @@ public class IRCEventHandler {
                 eventManager.publish(new GiftSubUpgradeEvent(channel, user, promoName, giftTotal, senderLogin, senderName));
             }
             // Upgrading from a Prime sub to a normal one
-            else if (msgId.equalsIgnoreCase("primepaidupgrade")) {
+            else if ("primepaidupgrade".equalsIgnoreCase(msgId)) {
                 // Load Info
                 EventUser user = event.getUser();
                 SubscriptionPlan subPlan = event.getTagValue("msg-param-sub-plan").map(SubscriptionPlan::fromString).orElse(null);
@@ -286,7 +286,7 @@ public class IRCEventHandler {
                 eventManager.publish(new PrimeSubUpgradeEvent(channel, user, subPlan));
             }
             // Extend Subscription
-            else if (msgId.equalsIgnoreCase("extendsub")) {
+            else if ("extendsub".equalsIgnoreCase(msgId)) {
                 // Load Info
                 EventUser user = event.getUser();
                 SubscriptionPlan subPlan = event.getTagValue("msg-param-sub-plan").map(SubscriptionPlan::fromString).orElse(null);
@@ -329,7 +329,7 @@ public class IRCEventHandler {
     public void onPayForward(IRCMessageEvent event) {
         String msgId;
         if ("USERNOTICE".equals(event.getCommandType()) && (msgId = event.getTags().get("msg-id")) != null
-            && (msgId.equalsIgnoreCase("standardpayforward") || msgId.equalsIgnoreCase("communitypayforward"))) {
+            && ("standardpayforward".equalsIgnoreCase(msgId) || "communitypayforward".equalsIgnoreCase(msgId))) {
             // Load Info
             EventChannel channel = event.getChannel();
             EventUser user = event.getUser();

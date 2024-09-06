@@ -488,7 +488,7 @@ public class TwitchChat implements ITwitchChat {
         String userName;
         if (chatCredential != null) {
             boolean sendRealPass = sendCredentialToThirdPartyHost // check whether this security feature has been overridden
-                || baseUrl.equalsIgnoreCase(TWITCH_WEB_SOCKET_SERVER) // check whether the url is exactly the official one
+                || TWITCH_WEB_SOCKET_SERVER.equalsIgnoreCase(baseUrl) // check whether the url is exactly the official one
                 || baseUrl.equalsIgnoreCase(TWITCH_WEB_SOCKET_SERVER.substring(0, TWITCH_WEB_SOCKET_SERVER.length() - 4)); // check whether the url matches without the port
 
             String token;
