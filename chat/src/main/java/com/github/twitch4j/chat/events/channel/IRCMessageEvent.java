@@ -197,7 +197,7 @@ public class IRCMessageEvent extends TwitchEvent {
 	 * @return Client name, or empty.
 	 */
 	public Optional<String> parseClientName(String raw) {
-		if(raw.equals(":tmi.twitch.tv") || raw.equals(":jtv")) {
+		if(":tmi.twitch.tv".equals(raw) || ":jtv".equals(raw)) {
 			return Optional.empty();
 		}
 
